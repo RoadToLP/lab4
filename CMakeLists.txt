@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.16.3)
+project(lab4)
+
+set(CMAKE_CXX_STANDARD 20)
+add_subdirectory(fmt EXCLUDE_FROM_ALL)
+find_package(Boost)
+include_directories(${Boost_INCLUDE_DIRS})
+add_subdirectory(gtest/lib)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+add_executable(lab4 main.cpp Book.cpp Book.h EducationalBook.cpp EducationalBook.h ScientificBook.cpp ScientificBook.h FictionBook.cpp FictionBook.hpp ui.cpp ui.h Library.cpp Library.hpp tests.cpp tests.h)
+target_link_libraries(lab4 fmt::fmt ${Boost_LIBRARIES} readline gtest gtest_main)
